@@ -19,9 +19,11 @@ const transferCryptoAPI = async () => {
 
   const transfers = [
     {
-      asset: 'HBAR',
+      assetType: 'HBAR', // 'HBAR' | 'TOKEN' | 'NFT'
       to: '0.0.4498148',
-      amount: 1 // in Hbar
+      amount: 1,
+      assetId?, // You must pass in a Token ID or NFT Id for transferring tokens
+      from?,    // This can be passed if you're trying to do a delegate transfer
     }
   ]
 
@@ -53,39 +55,52 @@ const transferCryptoAPI = async () => {
 ```
 
 {% hint style="info" %}
-If you pass an 'undefined' value to maxFee, the uses the default maxFee which is 1 Hbar.&#x20;
+If you pass an 'undefined' value to maxFee, the snap uses the maximum possible value as maxFee
 {% endhint %}
 
 ## What the API does
 
 1. Retrieves the currently connected account the user has selected on Metamask. If it's the first time, a new [snap account](../../snap-account.md) is created and the account info is saved in snap state.
 2. Parses the arguments that were passed such as the asset to transfer, who to transfer to and the amount to transfer.&#x20;
-3. Send the asset to the receiver address
+3. Calls the [Hedera SDK Transfer Cryptocurrency API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/accounts-and-hbar/transfer-cryptocurrency) to transfer hbar, tokens, nfts, etc. It can also be used to do a delegate transfer if the account has another account approved to spend tokens on its behalf.
+4. Send the asset to the receiver address
 
 An example response:
 
 ```json
 {
-  "status": "SUCCESS",
-  "accountId": "",
-  "fileId": "",
-  "contractId": "",
-  "topicId": "",
-  "tokenId": "",
-  "scheduleId": "",
-  "exchangeRate": {
-    "hbars": 30000,
-    "cents": 177843,
-    "expirationTime": "2023-11-09T20:00:00.000Z",
-    "exchangeRateInCents": 5.9281
+  "currentAccount": {
+    "hederaAccountId": "0.0.4559",
+    "hederaEvmAddress": "0x3ba201df50314e4702d4d92b52d304ee63bfca23",
+    "balance": {
+      "hbars": 89.60505513,
+      "timestamp": "Thu, 01 Feb 2024 21:22:58 GMT",
+      "tokens": {}
+    },
+    "network": "testnet"
   },
-  "topicSequenceNumber": "0",
-  "topicRunningHash": "",
-  "totalSupply": "0",
-  "scheduledTransactionId": "",
-  "serials": [],
-  "duplicates": [],
-  "children": []
+  "receipt": {
+    "status": "SUCCESS",
+    "accountId": "",
+    "fileId": "",
+    "contractId": "",
+    "topicId": "",
+    "tokenId": "",
+    "scheduleId": "",
+    "exchangeRate": {
+      "hbars": 1,
+      "cents": 12,
+      "expirationTime": "Mon, 25 Nov 1963 17:31:44 GMT",
+      "exchangeRateInCents": 12
+    },
+    "topicSequenceNumber": "0",
+    "topicRunningHash": "",
+    "totalSupply": "0",
+    "scheduledTransactionId": "",
+    "serials": [],
+    "duplicates": [],
+    "children": []
+  }
 }
 ```
 

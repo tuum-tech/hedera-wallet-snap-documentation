@@ -37,9 +37,10 @@ To learn more about Snaps, visit [Metamask Snap Guide](https://docs.metamask.io/
 
 * Install from Metamask Snap Directory: [https://snaps.metamask.io/snap/npm/hashgraph/hedera-wallet-snap/](https://snaps.metamask.io/snap/npm/hashgraph/hedera-wallet-snap/)
 * Stable Version: v0.1.5: [https://github.com/hashgraph/hedera-metamask-snaps/tree/v0.1.5/packages/hedera-wallet-snap/packages/snap](https://github.com/hashgraph/hedera-metamask-snaps/tree/v0.1.5/packages/hedera-wallet-snap/packages/snap)
+* Latest Version: v0.2.2: [https://github.com/hashgraph/hedera-metamask-snaps/tree/v0.2.2/packages/hedera-wallet-snap/packages/snap](https://github.com/hashgraph/hedera-metamask-snaps/tree/v0.2.2/packages/hedera-wallet-snap/packages/snap)
 * Snap Npm Package: [https://www.npmjs.com/package/@hashgraph/hedera-wallet-snap](https://www.npmjs.com/package/@hashgraph/hedera-wallet-snap)
 * Snap Audit Report: [Hedera Wallet Snap Audit Report by Cure53](https://cure53.de/pentest-report\_tuum-hedera-snap.pdf)
-* Demo Video showcasing Hedera Wallet Snap integration on an example website: [https://youtu.be/wzHn9z3CWpM](https://youtu.be/wzHn9z3CWpM)
+* Demo Video showcasing Hedera Wallet Snap integration on an example website: [https://youtu.be/4ItGGy1F6rc?si=8HmxIXGyLU7Fk4WH](https://youtu.be/4ItGGy1F6rc?si=8HmxIXGyLU7Fk4WH)
 
 ## _Disclaimer_
 

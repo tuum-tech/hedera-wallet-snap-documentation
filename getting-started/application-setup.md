@@ -3,9 +3,9 @@
 ## Add @hashgraph/hedera-wallet-snap to package.json
 
 ```bash
-npm install @hashgraph/hedera-wallet-snap@0.1.3
+npm install @hashgraph/hedera-wallet-snap@0.2.1
 or
-yarn add @hashgraph/hedera-wallet-snap@0.1.3
+yarn add @hashgraph/hedera-wallet-snap@0.2.1
 ```
 
 ## Check whether Metamask is installed(OPTIONAL)

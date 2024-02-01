@@ -16,11 +16,11 @@
 * [x] Send HBAR to an EVM address
 * [x] Auto-create a Hedera Network Account for a public key
 * [x] Auto-create an account for an EVM address
-* [ ] View Transactions history
-* [ ] Approve and delete an allowance
+* [x] View Transactions history
+* [x] Approve and delete an allowance
 * [x] Transfer Digital Assets(both fungible and non-fungible tokens) between Hedera network accounts
-* [ ] Delete an account
-* [ ] Stake and Unstake HBAR to and from Hedera Network nodes
+* [x] Delete an account
+* [x] Stake and Unstake HBAR to and from Hedera Network nodes
 
 ## Hedera Token
 
@@ -37,7 +37,7 @@
 * [ ] Freeze an account
 * [ ] Unfreeze an account
 * [ ] Enable and disable KYC account flag
-* [ ] Associate and disassociate tokens to an account
+* [x] Associate and disassociate tokens to an account
 * [ ] Pause and unpause a Digital Asset
 * [ ] Wipe a Digital Asset
 
@@ -55,7 +55,7 @@
 
 ## Miscellaneous Functions
 
-* [ ] Sign any message using user's snap account(similiar to how SIWE works with Metamask)
+* [x] Sign any message using user's snap account(similiar to how SIWE works with Metamask)
 
 ## Example website
 

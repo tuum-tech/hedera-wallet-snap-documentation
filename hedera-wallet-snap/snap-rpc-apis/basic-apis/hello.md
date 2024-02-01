@@ -23,7 +23,7 @@ const handleHelloAPI = async () => {
 ```
 
 {% hint style="info" %}
-Note that you do not need to pass in "mirrorNodeUrl" but if you do, the snap will use that URL instead of the default mirror node which may have rate limits associated with it.
+Note that you do not need to pass in "mirrorNodeUrl" but if you do, the snap will use that URL instead of the default public Hedera mirror nodes which may have rate limits associated with it.
 {% endhint %}
 
 ## What the API does
@@ -33,7 +33,7 @@ Note that you do not need to pass in "mirrorNodeUrl" but if you do, the snap wil
 
 
 
-<figure><img src="../../../.gitbook/assets/Untitled.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled (2).png" alt=""><figcaption></figcaption></figure>
 
 ## Live Demo on CodePen
 

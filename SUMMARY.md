@@ -17,7 +17,10 @@
     * [getCurrentAccount](hedera-wallet-snap/snap-rpc-apis/snap-state-apis/getcurrentaccount.md)
   * [Account APIs](hedera-wallet-snap/snap-rpc-apis/account-apis/README.md)
     * [getAccountInfo](hedera-wallet-snap/snap-rpc-apis/account-apis/getaccountinfo.md)
-    * [transferCrypto](hedera-wallet-snap/snap-rpc-apis/account-apis/transfercrypto.md)
+    * [getAccountBalance](hedera-wallet-snap/snap-rpc-apis/account-apis/getaccountbalance.md)
+  * [Transactions APIs](hedera-wallet-snap/snap-rpc-apis/transactions-apis/README.md)
+    * [transferCrypto](hedera-wallet-snap/snap-rpc-apis/transactions-apis/transfercrypto.md)
+    * [getTransactions](hedera-wallet-snap/snap-rpc-apis/transactions-apis/gettransactions.md)
 * [Snap Permissions](hedera-wallet-snap/snap-permissions.md)
 
 ## Getting Started
