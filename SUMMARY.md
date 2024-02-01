@@ -18,7 +18,7 @@
   * [Account APIs](hedera-wallet-snap/snap-rpc-apis/account-apis/README.md)
     * [getAccountInfo](hedera-wallet-snap/snap-rpc-apis/account-apis/getaccountinfo.md)
     * [getAccountBalance](hedera-wallet-snap/snap-rpc-apis/account-apis/getaccountbalance.md)
-    * [stakeHbar(todo)](hedera-wallet-snap/snap-rpc-apis/account-apis/stakehbar-todo.md)
+    * [stakeHbar](hedera-wallet-snap/snap-rpc-apis/account-apis/stakehbar.md)
     * [approveAllowance(todo)](hedera-wallet-snap/snap-rpc-apis/account-apis/approveallowance-todo.md)
     * [deleteAllowance(todo)](hedera-wallet-snap/snap-rpc-apis/account-apis/deleteallowance-todo.md)
     * [deleteAccount(todo)](hedera-wallet-snap/snap-rpc-apis/account-apis/deleteaccount-todo.md)
