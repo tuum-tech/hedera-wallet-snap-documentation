@@ -18,9 +18,17 @@
   * [Account APIs](hedera-wallet-snap/snap-rpc-apis/account-apis/README.md)
     * [getAccountInfo](hedera-wallet-snap/snap-rpc-apis/account-apis/getaccountinfo.md)
     * [getAccountBalance](hedera-wallet-snap/snap-rpc-apis/account-apis/getaccountbalance.md)
+    * [stakeHbar(todo)](hedera-wallet-snap/snap-rpc-apis/account-apis/stakehbar-todo.md)
+    * [approveAllowance(todo)](hedera-wallet-snap/snap-rpc-apis/account-apis/approveallowance-todo.md)
+    * [deleteAllowance(todo)](hedera-wallet-snap/snap-rpc-apis/account-apis/deleteallowance-todo.md)
+    * [deleteAccount(todo)](hedera-wallet-snap/snap-rpc-apis/account-apis/deleteaccount-todo.md)
   * [Transactions APIs](hedera-wallet-snap/snap-rpc-apis/transactions-apis/README.md)
-    * [transferCrypto](hedera-wallet-snap/snap-rpc-apis/transactions-apis/transfercrypto.md)
+    * [transferCrypto](hedera-wallet-snap/snap-rpc-apis/account-apis/transfercrypto.md)
     * [getTransactions](hedera-wallet-snap/snap-rpc-apis/transactions-apis/gettransactions.md)
+  * [HTS APIs](hedera-wallet-snap/snap-rpc-apis/hts-apis/README.md)
+    * [associateTokens(todo)](hedera-wallet-snap/snap-rpc-apis/hts-apis/associatetokens-todo.md)
+  * [Miscellaneous APIs](hedera-wallet-snap/snap-rpc-apis/miscellaneous-apis/README.md)
+    * [signMessage(todo)](hedera-wallet-snap/snap-rpc-apis/miscellaneous-apis/signmessage-todo.md)
 * [Snap Permissions](hedera-wallet-snap/snap-permissions.md)
 
 ## Getting Started

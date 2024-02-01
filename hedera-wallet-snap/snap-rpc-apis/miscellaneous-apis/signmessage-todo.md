@@ -1,4 +1,4 @@
-# transferCrypto
+# signMessage(todo)
 
 ## How to call the API from an app
 
@@ -9,7 +9,7 @@ Then, depending on whether you're trying to connect to a metamask account or a n
 ```tsx
 const snapId = `npm:@hashgraph/hedera-wallet-snap`
 
-const transferCryptoAPI = async () => {
+const getAccountInfoAPI = async () => {
   const externalAccountParams = {
     externalAccount: {
       accountIdOrEvmAddress: '0.0.12345',
@@ -17,31 +17,18 @@ const transferCryptoAPI = async () => {
     }
   }
 
-  const transfers = [
-    {
-      assetType: 'HBAR', // 'HBAR' | 'TOKEN' | 'NFT'
-      to: '0.0.4498148',
-      amount: 1,
-      assetId?, // You must pass in a Token ID or NFT Id for transferring tokens
-      from?,    // This can be passed if you're trying to do a delegate transfer
-    }
-  ]
-
-  // If you're sending to an exchange account, 
-  // you will likely need to fill this out
-  const memo = '' 
-
   await window.ethereum.request({
     method: 'wallet_invokeSnap',
     params: {
       snapId,
       request: {
-        method: 'transferCrypto',
+        method: 'getAccountBalance',
         params: {
           network: 'testnet',
-          transfers,
-          memo,
-          maxFee: undefined
+          mirrorNodeUrl: 'https://testnet.mirrornode.hedera.com'
+          // Pass 'accountId' is useful if you want to retrieve account balance
+          // for someone else rather than yourself
+          accountId: '0.0.67890', 
           /* 
             Uncomment the below line if you want to connect 
             to a non-metamask account
@@ -55,17 +42,43 @@ const transferCryptoAPI = async () => {
 ```
 
 {% hint style="info" %}
-If you pass an 'undefined' value to maxFee, the snap uses the maximum possible value as maxFee
+If you don't pass in "accountId", it will retrieve account info for the currently connected account.
 {% endhint %}
+
+Note that you can also call this API to retrieve account balance for another account Id which you do not own. Think of this as fetching the account balance of an arbitrary hedera account Id.\
+To do that, you would just pass in `accountId` like this:
+
+```tsx
+const snapId = `npm:@hashgraph/hedera-wallet-snap`
+
+  await window.ethereum.request({
+    method: 'wallet_invokeSnap',
+    params: {
+      snapId,
+      request: {
+        method: 'getAccountBalance',
+        params: {
+          network: 'testnet',
+          mirrorNodeUrl: 'https://testnet.mirrornode.hedera.com'
+          accountId: '0.0.1',
+        }
+      }
+    }
+  })
+}
+```
+
+This would retrieve the account balance of the account `0.0.1` from the Hedera Network Nodes.
 
 ## What the API does
 
 1. Retrieves the currently connected account the user has selected on Metamask. If it's the first time, a new [snap account](../../snap-account.md) is created and the account info is saved in snap state.
-2. Parses the arguments that were passed such as the asset to transfer, who to transfer to and the amount to transfer.&#x20;
-3. Calls the [Hedera SDK Transfer Cryptocurrency API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/accounts-and-hbar/transfer-cryptocurrency) to transfer hbar, tokens, nfts, etc. It can also be used to do a delegate transfer if the account has another account approved to spend tokens on its behalf.
-4. Send the asset to the receiver address
+2. Calls the [Get Account Balance API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/accounts-and-hbar/get-account-balance) to get account balance.
+3. Returns the result.
 
-An example response:
+Some example responses:
+
+For a hedera account id `0.0.4559`:
 
 ```json
 {
@@ -73,40 +86,19 @@ An example response:
     "hederaAccountId": "0.0.4559",
     "hederaEvmAddress": "0x3ba201df50314e4702d4d92b52d304ee63bfca23",
     "balance": {
-      "hbars": 89.60505513,
-      "timestamp": "Thu, 01 Feb 2024 21:22:58 GMT",
+      "hbars": 89.60420503,
+      "timestamp": "2024-02-01T21:35:21.826Z",
       "tokens": {}
     },
     "network": "testnet"
   },
-  "receipt": {
-    "status": "SUCCESS",
-    "accountId": "",
-    "fileId": "",
-    "contractId": "",
-    "topicId": "",
-    "tokenId": "",
-    "scheduleId": "",
-    "exchangeRate": {
-      "hbars": 1,
-      "cents": 12,
-      "expirationTime": "Mon, 25 Nov 1963 17:31:44 GMT",
-      "exchangeRateInCents": 12
-    },
-    "topicSequenceNumber": "0",
-    "topicRunningHash": "",
-    "totalSupply": "0",
-    "scheduledTransactionId": "",
-    "serials": [],
-    "duplicates": [],
-    "children": []
-  }
+  "accountBalance": 89.60420503
 }
 ```
 
 ## Live Demo on CodePen
 
-{% embed url="https://codepen.io/kpachhai/pen/eYxWvmM" %}
+{% embed url="https://codepen.io/kpachhai/pen/WNmzaZj" %}
 
 <details>
 
