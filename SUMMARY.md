@@ -21,14 +21,14 @@
     * [stakeHbar](hedera-wallet-snap/snap-rpc-apis/account-apis/stakehbar.md)
     * [approveAllowance](hedera-wallet-snap/snap-rpc-apis/account-apis/approveallowance.md)
     * [deleteAllowance](hedera-wallet-snap/snap-rpc-apis/account-apis/deleteallowance.md)
-    * [deleteAccount(todo)](hedera-wallet-snap/snap-rpc-apis/account-apis/deleteaccount-todo.md)
+    * [deleteAccount](hedera-wallet-snap/snap-rpc-apis/account-apis/deleteaccount.md)
   * [Transactions APIs](hedera-wallet-snap/snap-rpc-apis/transactions-apis/README.md)
     * [transferCrypto](hedera-wallet-snap/snap-rpc-apis/account-apis/transfercrypto.md)
     * [getTransactions](hedera-wallet-snap/snap-rpc-apis/transactions-apis/gettransactions.md)
   * [HTS APIs](hedera-wallet-snap/snap-rpc-apis/hts-apis/README.md)
-    * [associateTokens(todo)](hedera-wallet-snap/snap-rpc-apis/hts-apis/associatetokens-todo.md)
+    * [associateTokens](hedera-wallet-snap/snap-rpc-apis/hts-apis/associatetokens.md)
   * [Miscellaneous APIs](hedera-wallet-snap/snap-rpc-apis/miscellaneous-apis/README.md)
-    * [signMessage(todo)](hedera-wallet-snap/snap-rpc-apis/miscellaneous-apis/signmessage-todo.md)
+    * [signMessage](hedera-wallet-snap/snap-rpc-apis/miscellaneous-apis/signmessage.md)
 * [Snap Permissions](hedera-wallet-snap/snap-permissions.md)
 
 ## Getting Started

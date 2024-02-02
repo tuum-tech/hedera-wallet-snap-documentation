@@ -1,4 +1,4 @@
-# signMessage(todo)
+# signMessage
 
 ## How to call the API from an app
 
@@ -9,7 +9,7 @@ Then, depending on whether you're trying to connect to a metamask account or a n
 ```tsx
 const snapId = `npm:@hashgraph/hedera-wallet-snap`
 
-const getAccountInfoAPI = async () => {
+const signMessageAPI = async () => {
   const externalAccountParams = {
     externalAccount: {
       accountIdOrEvmAddress: '0.0.12345',
@@ -22,13 +22,10 @@ const getAccountInfoAPI = async () => {
     params: {
       snapId,
       request: {
-        method: 'getAccountBalance',
+        method: 'signMessage',
         params: {
           network: 'testnet',
-          mirrorNodeUrl: 'https://testnet.mirrornode.hedera.com'
-          // Pass 'accountId' is useful if you want to retrieve account balance
-          // for someone else rather than yourself
-          accountId: '0.0.67890', 
+          message: 'Hello World!',
           /* 
             Uncomment the below line if you want to connect 
             to a non-metamask account
@@ -42,39 +39,15 @@ const getAccountInfoAPI = async () => {
 ```
 
 {% hint style="info" %}
-If you don't pass in "accountId", it will retrieve account info for the currently connected account.
+Note that you can also pass in an additional parameter `header` in addition to `message` which will be displayed to the user as part of the MetaMask Dialog Box header.
 {% endhint %}
-
-Note that you can also call this API to retrieve account balance for another account Id which you do not own. Think of this as fetching the account balance of an arbitrary hedera account Id.\
-To do that, you would just pass in `accountId` like this:
-
-```tsx
-const snapId = `npm:@hashgraph/hedera-wallet-snap`
-
-  await window.ethereum.request({
-    method: 'wallet_invokeSnap',
-    params: {
-      snapId,
-      request: {
-        method: 'getAccountBalance',
-        params: {
-          network: 'testnet',
-          mirrorNodeUrl: 'https://testnet.mirrornode.hedera.com'
-          accountId: '0.0.1',
-        }
-      }
-    }
-  })
-}
-```
-
-This would retrieve the account balance of the account `0.0.1` from the Hedera Network Nodes.
 
 ## What the API does
 
 1. Retrieves the currently connected account the user has selected on Metamask. If it's the first time, a new [snap account](../../snap-account.md) is created and the account info is saved in snap state.
-2. Calls the [Get Account Balance API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/accounts-and-hbar/get-account-balance) to get account balance.
-3. Returns the result.
+2. Displays the MetaMask dialog box for the message to sign.
+3. Signs the given message using the private key of the user.
+4. Returns the signature as response.
 
 Some example responses:
 
@@ -92,13 +65,13 @@ For a hedera account id `0.0.4559`:
     },
     "network": "testnet"
   },
-  "accountBalance": 89.60420503
+  "signature": "0x873b1a658758d0459b7bc455d3def251b175db0f9c4966c54260a7127c68a83678add05f7f51965b966cd9c4f7fff1159ace50a6177b95e24e2919e0bded2c401c"
 }
 ```
 
 ## Live Demo on CodePen
 
-{% embed url="https://codepen.io/kpachhai/pen/WNmzaZj" %}
+{% embed url="https://codepen.io/kpachhai/pen/rNRvevK" %}
 
 <details>
 
