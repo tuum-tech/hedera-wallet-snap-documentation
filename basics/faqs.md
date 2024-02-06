@@ -4,13 +4,13 @@
 
 **For developers integrating the snap:**
 
-1. To get started, make sure you have [MetaMask](https://metamask.io/) first and then install the Hedera Wallet snap  [npm package](https://www.npmjs.com/package/@hashgraph/hedera-wallet-snap) into your app. Note that as of now, v0.1.5 is the most stable version so we recommend you use this in your application.
-2. Note that you cannot install snaps directly. You would need to enable this in your app. To learn more about how you can do this in your own app, look at an [example site code](https://github.com/hashgraph/hedera-metamask-snaps/tree/main/packages/hedera-wallet-snap/packages/site) that has the Hedera Wallet Snap installation functionality or go through the live demos within the [Snap RPC APIs](../hedera-wallet-snap/snap-rpc-apis/) section where you can check out the working html/js code to do this.
+1. To get started, make sure you have [MetaMask](https://metamask.io/) first and then install the Hedera Wallet snap from the [MetaMask Snaps Directory](https://snaps.metamask.io/snap/npm/hashgraph/hedera-wallet-snap/). Note that as of now, v0.2.4 is the most stable version so we recommend you use this in your application.
+2. Note that snaps don't have user interface like MetaMask does so the snap needs to be installed by the user first and then the dapp can call Metamask API to interact with the snap. To learn more about how you can do this in your own app, look at an [example site code](https://github.com/hashgraph/hedera-metamask-snaps/tree/main/packages/hedera-wallet-snap/packages/site) that has the Hedera Wallet Snap installation functionality or go through the live demos within the [Snap RPC APIs](../hedera-wallet-snap/snap-rpc-apis/) section where you can check out the working html/js code to do this.
 
 **For users using the snap:**
 
 1. You can install the Hedera Wallet snap from the [Metamask Snaps store](https://snaps.metamask.io/). However, you cannot interact with the snap directly from Metamask. Rather, you will need to visit applications that have integrated the snap.&#x20;
-2. In the future, each snap will have a dedicated page within Metamask but that is not yet live on Metamask and will be coming in 2024.
+2. In the future, each snap will have a dedicated page within Metamask but that is not yet live on Metamask and will be coming later in 2024.
 
 ## What are Metamask Snaps?
 
@@ -26,7 +26,7 @@ Snaps run in a sandboxed environment and use a permissions model to protect your
 
 ## Can I interact with Hedera Wallet Snap directly in MetaMask?
 
-To interact with the snap and perform actions you need to go through a dapp. We have built a dedicated dapp that you can access here but you're also welcome to build your own dapps integrating with the Hedera Wallet Snap.
+To interact with the snap and perform actions you need to go through a dapp. We have built a dedicated [dapp](https://pulse.tuum.tech/) that you can access here but you're also welcome to build your own dapps integrating with the Hedera Wallet Snap.
 
 ## Is the Hedera Wallet Snap available on MetaMask Mobile?
 
@@ -35,3 +35,11 @@ Snaps are currently only available on MetaMask. MetaMask is a browser-based exte
 ## What happens if I delete the snap in MetaMask?
 
 Reinstalling the snap will automatically recover your account provided you use the same Metamask account to configure the account again via your DApp.
+
+## Why is my Snap address different from my MetaMask address?
+
+MetaMask does not allow Snaps to access the private keys of MetaMask accounts so Hedera Wallet Snap creates a new account with a private key. Note that neither you nor any Dapps will be able to view the private key of this Snap account as it's stored within snap sandboxed storage and is not accessible. This new Snap account is still associated with the currently connected MetaMask account however so you can always get back to your Snap account by connecting to this MetaMask account in the future.
+
+## How can I connect to my MetaMask account?
+
+Since MetaMask does not allow Snaps to access the private keys of MetaMask accounts, Hedera Wallet Snap creates a new account. However, the Snap does offer flexibility in that it also lets you connect to an external account by directly importing your private key to the Snap. Note that the Snap creates a MetaMask dialog box for you to enter your private key so this key is not shared with any applications. Refer to [Snap RPC APIs](../hedera-wallet-snap/snap-rpc-apis/) on how to enable this in your Dapp.
