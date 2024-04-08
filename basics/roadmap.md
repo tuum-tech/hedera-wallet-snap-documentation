@@ -22,24 +22,24 @@
 * [x] Delete an account
 * [x] Stake and Unstake HBAR to and from Hedera Network nodes
 
-## Hedera Token
+## Hedera Token Service
 
-* [ ] Create a Token ID
-* [ ] Create an NFT ID
-* [ ] Create Digital Assets(both fungible and non-fungible tokens)
-* [ ] Update a Digital Asset and its properties
+* [x] Create a Token ID
+* [x] Create an NFT ID
+* [x] Create Digital Assets(both fungible and non-fungible tokens)
+* [x] Update a Digital Asset and its properties
 * [x] Transfer Digital Assets
-* [ ] Delete a Digital Asset
-* [ ] Mint a Digital Asset
-* [ ] Burn a Digital Asset
+* [x] Delete a Digital Asset
+* [x] Mint a Digital Asset
+* [x] Burn a Digital Asset
 * [x] Get an account's Digital Asset balance
-* [ ] Get Digital Asset info for both fungible and non-fungible tokens
-* [ ] Freeze an account
-* [ ] Unfreeze an account
-* [ ] Enable and disable KYC account flag
+* [x] Get Digital Asset info for both fungible and non-fungible tokens
+* [x] Freeze an account
+* [x] Unfreeze an account
+* [x] Enable and disable KYC account flag
 * [x] Associate and disassociate tokens to an account
-* [ ] Pause and unpause a Digital Asset
-* [ ] Wipe a Digital Asset
+* [x] Pause and unpause a Digital Asset
+* [x] Wipe a Digital Asset
 
 ## Hedera File Service
 
@@ -56,6 +56,8 @@
 ## Miscellaneous Functions
 
 * [x] Sign any message using user's snap account(similiar to how SIWE works with Metamask)
+* [x] Perform atomic swaps between two parties between any two tokens
+* [x] Show private key of the snap account on Metamask dialog box
 
 ## Example website
 

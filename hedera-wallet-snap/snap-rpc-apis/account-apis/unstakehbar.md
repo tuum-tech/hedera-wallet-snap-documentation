@@ -1,4 +1,4 @@
-# stakeHbar
+# unstakeHbar
 
 ## How to call the API from an app
 
@@ -9,7 +9,7 @@ Then, depending on whether you're trying to connect to a metamask account or a n
 ```tsx
 const snapId = `npm:@hashgraph/hedera-wallet-snap`
 
-const stakeHbarAPI = async () => {
+const unstakeHbarAPI = async () => {
   const externalAccountParams = {
     externalAccount: {
       accountIdOrEvmAddress: '0.0.12345',
@@ -22,7 +22,7 @@ const stakeHbarAPI = async () => {
     params: {
       snapId,
       request: {
-        method: 'stakeHbar',
+        method: 'unstakeHbar',
         params: {
           network: 'testnet',
           nodeId: 0
@@ -39,64 +39,13 @@ const stakeHbarAPI = async () => {
 ```
 
 {% hint style="info" %}
-You must pass in either "nodeId" or "accountId" but not both.&#x20;
-
 To learn about what it means to stake to a node vs an account, please refer to [Staking Info Documentation](https://docs.hedera.com/hedera/core-concepts/accounts/account-properties#staking).
 {% endhint %}
-
-Note that you can also call this API to stake to another Account Id instead of a Node. \
-To do that, you would just pass in `accountId` like this:
-
-```tsx
-const snapId = `npm:@hashgraph/hedera-wallet-snap`
-
-  await window.ethereum.request({
-    method: 'wallet_invokeSnap',
-    params: {
-      snapId,
-      request: {
-        method: 'stakeHbar',
-        params: {
-          network: 'testnet',
-          accountId: '0.0.1',
-        }
-      }
-    }
-  })
-}
-```
-
-This would stake to the account Id `0.0.1`.
-
-Note that you can also call this API to unstake your Hbar from a node or an accountId. This basically changes the account property for [declining staking reward](https://docs.hedera.com/hedera/core-concepts/accounts/account-properties#decline-to-earn-staking-rewards).  \
-To do that, you would just pass in `null` to both `nodeId` and `accountId`
-
-```tsx
-const snapId = `npm:@hashgraph/hedera-wallet-snap`
-
-  await window.ethereum.request({
-    method: 'wallet_invokeSnap',
-    params: {
-      snapId,
-      request: {
-        method: 'stakeHbar',
-        params: {
-          network: 'testnet',
-          nodeId: null,
-          accountId: null,
-        }
-      }
-    }
-  })
-}
-```
-
-This would make it so that you stop getting staking rewards.
 
 ## What the API does
 
 1. Retrieves the currently connected account the user has selected on Metamask. If it's the first time, a new [snap account](../../snap-account.md) is created and the account info is saved in snap state.
-2. Calls the [Hedera SDK Update Account API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/accounts-and-hbar/update-an-account) to change the property related to staking.
+2. Calls the [Hedera SDK Update Account API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/accounts-and-hbar/update-an-account) to change the property related to staking which means it will also update `setDeclineStakingReward` to true hence, the account will stop receiving staking rewards
 3. Returns the transaction receipt as response
 
 Some example responses:
@@ -140,9 +89,9 @@ For a hedera account id `0.0.4559`:
 }
 ```
 
-## Stake Hbar Live Demo on CodePen
+## Unstake Hbar Live Demo on CodePen
 
-{% embed url="https://codepen.io/kpachhai/pen/VwRXEgL" %}
+{% embed url="https://codepen.io/kpachhai/pen/bGZvmJr" %}
 
 <details>
 
