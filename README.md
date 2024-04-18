@@ -2,7 +2,7 @@
 
 ## Overview
 
-Hedera Wallet Snap is a Metamask application that developers can incorporate into a variety of third party platforms to enhance MetaMask's functionality beyond its native capabilities. Specifically, Hedera Wallet Snap makes it possible to interact with Hedera Hashgraph natively without relying on Hedera JSON-RPC Relay. It can be seamlessly installed as a JavaScript npm package on web applications, thereby offering a range of advanced native features of Hedera to users.
+Hedera Wallet Snap unlocks wallet functionality for Hedera via MetaMask that any other apps can interact with, thereby turning MetaMask into a native Hedera wallet without relying on Hedera JSON-RPC Relay.
 
 With Hedera Wallet Snap, users can send HBAR to another HBAR account id and an EVM address, retrieve account info from either the Hedera Ledger node or Hedera Mirror node.&#x20;
 
