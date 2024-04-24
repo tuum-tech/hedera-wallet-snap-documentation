@@ -33,7 +33,7 @@ Note that you do not need to pass in "mirrorNodeUrl" but if you do, the snap wil
 
 
 
-<figure><img src="../../../.gitbook/assets/Untitled.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled (1).png" alt=""><figcaption></figcaption></figure>
 
 Some example responses:
 
@@ -51,28 +51,6 @@ For a hedera account id `0.0.3581604`:
             "hbars": 5.67332072,
             "timestamp": "Wed, 13 Mar 2024 20:37:05 GMT",
             "tokens": {
-                "0.0.3582047": {
-                    "balance": 1,
-                    "decimals": 1,
-                    "tokenId": "0.0.3582047",
-                    "name": "PACHHAI",
-                    "symbol": "PACHHAI",
-                    "tokenType": "FUNGIBLE_COMMON",
-                    "supplyType": "INFINITE",
-                    "totalSupply": "100",
-                    "maxSupply": "0"
-                },
-                "0.0.3581974": {
-                    "balance": 0,
-                    "decimals": 2,
-                    "tokenId": "0.0.3581974",
-                    "name": "WOODS",
-                    "symbol": "WOODS",
-                    "tokenType": "FUNGIBLE_COMMON",
-                    "supplyType": "INFINITE",
-                    "totalSupply": "100",
-                    "maxSupply": "0"
-                },
                 "0.0.3590430": {
                     "balance": 1,
                     "decimals": 1,
