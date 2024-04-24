@@ -28,22 +28,60 @@ const handleHelloAPI = async () => {
 
 Some example responses:
 
-For a hedera account id `0.0.6118753`:
+For a hedera account id `0.0.3581604`:
 
-<pre class="language-json"><code class="lang-json"><strong>{
-</strong><strong>    "currentAccount": {
-</strong>        "metamaskAddress": "0x3ba201df50314e4702d4d92b52d304ee63bfca23",
-        "hederaAccountId": "0.0.6118753",
-        "hederaEvmAddress": "0x3ba201df50314e4702d4d92b52d304ee63bfca23",
+```json
+ {
+    "currentAccount": {
+        "metamaskEvmAddress": "0x0b3628d1b838993b5fceec8b2a26502e7a8e5241",
+        "externalEvmAddress": "",
+        "hederaAccountId": "0.0.3581604",
+        "hederaEvmAddress": "0xca53f9c93d30e0b7212d67901e5a24fb090d542b",
+        "publicKey": "0x0206022cea4c6dd6d2e7263b8802253971de922f5380661d97cba82dee66f57ad6",
         "balance": {
-            "hbars": 99.99838384,
-            "timestamp": "2023-11-30T22:04:09.990Z",
-            "tokens": {}
+            "hbars": 5.67332072,
+            "timestamp": "Wed, 13 Mar 2024 20:37:05 GMT",
+            "tokens": {
+                "0.0.3582047": {
+                    "balance": 1,
+                    "decimals": 1,
+                    "tokenId": "0.0.3582047",
+                    "name": "PACHHAI",
+                    "symbol": "PACHHAI",
+                    "tokenType": "FUNGIBLE_COMMON",
+                    "supplyType": "INFINITE",
+                    "totalSupply": "100",
+                    "maxSupply": "0"
+                },
+                "0.0.3581974": {
+                    "balance": 0,
+                    "decimals": 2,
+                    "tokenId": "0.0.3581974",
+                    "name": "WOODS",
+                    "symbol": "WOODS",
+                    "tokenType": "FUNGIBLE_COMMON",
+                    "supplyType": "INFINITE",
+                    "totalSupply": "100",
+                    "maxSupply": "0"
+                },
+                "0.0.3590430": {
+                    "balance": 1,
+                    "decimals": 1,
+                    "tokenId": "0.0.3590430",
+                    "name": "Token1",
+                    "symbol": "KP1",
+                    "tokenType": "FUNGIBLE_COMMON",
+                    "supplyType": "INFINITE",
+                    "totalSupply": "100",
+                    "maxSupply": "0"
+                }
+            }
         },
-        "network": "testnet"
+        "network": "testnet",
+        "mirrorNodeUrl": "https://testnet.mirrornode.hedera.com"
     }
 }
-</code></pre>
+```
 
 ## Live Demo on CodePen
 

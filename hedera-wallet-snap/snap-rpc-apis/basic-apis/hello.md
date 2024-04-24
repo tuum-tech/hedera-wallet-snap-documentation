@@ -33,7 +33,76 @@ Note that you do not need to pass in "mirrorNodeUrl" but if you do, the snap wil
 
 
 
-<figure><img src="../../../.gitbook/assets/Untitled (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled.png" alt=""><figcaption></figcaption></figure>
+
+Some example responses:
+
+For a hedera account id `0.0.3581604`:
+
+```json
+ {
+    "currentAccount": {
+        "metamaskEvmAddress": "0x0b3628d1b838993b5fceec8b2a26502e7a8e5241",
+        "externalEvmAddress": "",
+        "hederaAccountId": "0.0.3581604",
+        "hederaEvmAddress": "0xca53f9c93d30e0b7212d67901e5a24fb090d542b",
+        "publicKey": "0x0206022cea4c6dd6d2e7263b8802253971de922f5380661d97cba82dee66f57ad6",
+        "balance": {
+            "hbars": 5.67332072,
+            "timestamp": "Wed, 13 Mar 2024 20:37:05 GMT",
+            "tokens": {
+                "0.0.3582047": {
+                    "balance": 1,
+                    "decimals": 1,
+                    "tokenId": "0.0.3582047",
+                    "name": "PACHHAI",
+                    "symbol": "PACHHAI",
+                    "tokenType": "FUNGIBLE_COMMON",
+                    "supplyType": "INFINITE",
+                    "totalSupply": "100",
+                    "maxSupply": "0"
+                },
+                "0.0.3581974": {
+                    "balance": 0,
+                    "decimals": 2,
+                    "tokenId": "0.0.3581974",
+                    "name": "WOODS",
+                    "symbol": "WOODS",
+                    "tokenType": "FUNGIBLE_COMMON",
+                    "supplyType": "INFINITE",
+                    "totalSupply": "100",
+                    "maxSupply": "0"
+                },
+                "0.0.3590430": {
+                    "balance": 1,
+                    "decimals": 1,
+                    "tokenId": "0.0.3590430",
+                    "name": "Token1",
+                    "symbol": "KP1",
+                    "tokenType": "FUNGIBLE_COMMON",
+                    "supplyType": "INFINITE",
+                    "totalSupply": "100",
+                    "maxSupply": "0"
+                }
+            }
+        },
+        "network": "testnet",
+        "mirrorNodeUrl": "https://testnet.mirrornode.hedera.com"
+    }
+}
+```
+
+
+
+{% hint style="info" %}
+Note that if you're connecting to the snap using MetaMask wallet(default option), `metamaskEvmAddress` will show your metamask wallet address and if you're connecting to the snap using an external account(importing using private key directly),`externalEvmAddress` will be empty.
+{% endhint %}
+
+{% hint style="info" %}
+Note that if you're connecting to the snap using MetaMask wallet(default option), the `metamaskEvmAddress` and`hederaEvmAddress`will be different. This is because Hedera Wallet Snap creates a snap internal wallet as the snap has no direct access to the MetaMask wallet's private key.&#x20;
+
+Conversely, if you're connecting to the snap using an external account(importing using private key directly), `externalEvmAddress` and`hederaEvmAddress`will be the same. This is because Hedera Wallet Snap has access to the private key of the external account so there is no need to create a snap internal wallet.
+{% endhint %}
 
 ## Live Demo on CodePen
 
