@@ -23,7 +23,7 @@ const transferCryptoAPI = async () => {
       to: '0.0.4498148',
       amount: 1,
       assetId?, // You must pass in a Token ID or NFT Id for transferring tokens
-      from?,    // This can be passed if you're trying to do a delegate transfer
+      from?,    // This can be passed if you're trying to do a delegated transfer
     }
   ]
 
@@ -65,6 +65,10 @@ If you pass an 'undefined' value to maxFee, the snap uses the maximum possible v
 3. Calls the [Hedera SDK Transfer Cryptocurrency API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/accounts-and-hbar/transfer-cryptocurrency) to transfer hbar, tokens, nfts, etc. It can also be used to do a delegate transfer if the account has another account approved to spend tokens on its behalf.
 4. Send the asset to the receiver address
 5. Returns the transaction receipt as response
+
+
+
+<figure><img src="../../../.gitbook/assets/Untitled (9).png" alt=""><figcaption></figcaption></figure>
 
 An example response:
 

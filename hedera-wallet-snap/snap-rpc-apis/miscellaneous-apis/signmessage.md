@@ -25,7 +25,7 @@ const signMessageAPI = async () => {
         method: 'signMessage',
         params: {
           network: 'testnet',
-          message: 'Hello World!',
+          message: 'Hello there, this is a sample message. ',
           /* 
             Uncomment the below line if you want to connect 
             to a non-metamask account
@@ -38,10 +38,6 @@ const signMessageAPI = async () => {
 }
 ```
 
-{% hint style="info" %}
-Note that you can also pass in an additional parameter `header` in addition to `message` which will be displayed to the user as part of the MetaMask Dialog Box header.
-{% endhint %}
-
 ## What the API does
 
 1. Retrieves the currently connected account the user has selected on Metamask. If it's the first time, a new [snap account](../../snap-account.md) is created and the account info is saved in snap state.
@@ -49,23 +45,43 @@ Note that you can also pass in an additional parameter `header` in addition to `
 3. Signs the given message using the private key of the user.
 4. Returns the signature as response.
 
+
+
+<figure><img src="../../../.gitbook/assets/Untitled (8).png" alt=""><figcaption></figcaption></figure>
+
 Some example responses:
 
-For a hedera account id `0.0.4559`:
+For a hedera account id `0.0.3581604`:
 
 ```json
 {
-  "currentAccount": {
-    "hederaAccountId": "0.0.4559",
-    "hederaEvmAddress": "0x3ba201df50314e4702d4d92b52d304ee63bfca23",
-    "balance": {
-      "hbars": 89.60420503,
-      "timestamp": "2024-02-01T21:35:21.826Z",
-      "tokens": {}
+    "currentAccount": {
+        "metamaskEvmAddress": "0x0b3628d1b838993b5fceec8b2a26502e7a8e5241",
+        "externalEvmAddress": "",
+        "hederaAccountId": "0.0.3581604",
+        "hederaEvmAddress": "0xca53f9c93d30e0b7212d67901e5a24fb090d542b",
+        "publicKey": "0x0206022cea4c6dd6d2e7263b8802253971de922f5380661d97cba82dee66f57ad6",
+        "balance": {
+            "hbars": 5.67332072,
+            "timestamp": "Wed, 13 Mar 2024 20:37:05 GMT",
+            "tokens": {
+                "0.0.3590430": {
+                    "balance": 1,
+                    "decimals": 1,
+                    "tokenId": "0.0.3590430",
+                    "name": "Token1",
+                    "symbol": "KP1",
+                    "tokenType": "FUNGIBLE_COMMON",
+                    "supplyType": "INFINITE",
+                    "totalSupply": "100",
+                    "maxSupply": "0"
+                }
+            }
+        },
+        "network": "testnet",
+        "mirrorNodeUrl": "https://testnet.mirrornode.hedera.com"
     },
-    "network": "testnet"
-  },
-  "signature": "0x873b1a658758d0459b7bc455d3def251b175db0f9c4966c54260a7127c68a83678add05f7f51965b966cd9c4f7fff1159ace50a6177b95e24e2919e0bded2c401c"
+    "signature": "0x6ecceeaf7e3b81151893827b123a6409445d625dee9c986f29044aa979cf992f0fc3ef426655bc0a074c7de59bec742c72faf00bc5f594316836d2c64ea81e0f1b"
 }
 ```
 
