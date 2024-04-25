@@ -49,14 +49,12 @@ const mintTokenAPI= async () => {
 ## What the API does
 
 1. Retrieves the currently connected account the user has selected on Metamask. If it's the first time, a new [snap account](../../snap-account.md) is created and the account info is saved in snap state.
-2. Parses the arguments that were passed such as the name of the tokenId, amount, etc.
+2. Parses the arguments that were passed such as the tokenId, amount, etc.
 3. Calls the [Hedera SDK Mint Token API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/mint-a-token) to mint new tokens for both fungible and non-fungible token (NFT) types, thereby increasing the total supply of the specified token. The new tokens are sent to the treasury account.
 4. This action cannot be called if this token was created without passing the `supplyPublicKey` parameter. Furthermore, this action must also be called using the same public key account.
 5. Returns the transaction receipt as response
 
-
-
-<figure><img src="../../../.gitbook/assets/Untitled (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled (3).png" alt=""><figcaption></figcaption></figure>
 
 An example response:
 
@@ -125,8 +123,6 @@ An example response:
 ```
 
 ## Live Demo on CodePen
-
-
 
 {% embed url="https://codepen.io/kpachhai/pen/OJGqMGx" %}
 
