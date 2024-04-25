@@ -22,7 +22,7 @@ const createTokenAPI = async () => {
     params: {
       snapId,
       request: {
-        method: 'transferCrypto',
+        method: 'hts/createToken',
         params: {
           network: 'testnet',
           assetType: 'TOKEN', // TOKEN | NFT
