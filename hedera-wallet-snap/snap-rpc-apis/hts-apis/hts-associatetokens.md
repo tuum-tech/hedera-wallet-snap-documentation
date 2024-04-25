@@ -48,7 +48,7 @@ Note that you can also pass in multiple token Ids to associate multiple tokens t
 2. Calls the [Hedera SDK Associate Tokens API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/associate-tokens-to-an-account) to associate the account with the token Ids that are passed in parameters. This works for associating both fungible and non-fungible tokens.
 3. Returns the transaction receipt as response.
 
-<figure><img src="../../../.gitbook/assets/Untitled.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled (3).png" alt=""><figcaption></figcaption></figure>
 
 Some example responses:
 
