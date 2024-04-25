@@ -77,8 +77,6 @@ const createTokenAPI = async () => {
 3. Calls the [Hedera SDK Create Token API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/define-a-token) to create a new fungible or non-fungible token (NFT) on the Hedera network.
 4. Returns the transaction receipt as response
 
-
-
 <figure><img src="../../../.gitbook/assets/Untitled (10).png" alt=""><figcaption></figcaption></figure>
 
 An example response:
@@ -94,19 +92,7 @@ An example response:
         "balance": {
             "hbars": 104.67332072,
             "timestamp": "Thu, 25 Apr 2024 17:54:55 GMT",
-            "tokens": {
-                "0.0.3590430": {
-                    "balance": 1,
-                    "decimals": 1,
-                    "tokenId": "0.0.3590430",
-                    "name": "Token1",
-                    "symbol": "KP1",
-                    "tokenType": "FUNGIBLE_COMMON",
-                    "supplyType": "INFINITE",
-                    "totalSupply": "100",
-                    "maxSupply": "0"
-                }
-            }
+            "tokens": {}
         },
         "network": "testnet",
         "mirrorNodeUrl": "https://testnet.mirrornode.hedera.com"
@@ -137,8 +123,6 @@ An example response:
 ```
 
 ## Live Demo on CodePen
-
-
 
 {% embed url="https://codepen.io/kpachhai/pen/QWPoyQa" %}
 

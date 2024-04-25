@@ -1,4 +1,4 @@
-# associateTokens
+# hts/associateTokens
 
 ## How to call the API from an app
 
@@ -22,10 +22,10 @@ const associateTokensAPI = async () => {
     params: {
       snapId,
       request: {
-        method: 'associateTokens',
+        method: 'hts/associateTokens',
         params: {
           network: 'testnet',
-          tokenIds: ['0.0.5744'],
+          tokenIds: ['0.0.4280233'],
           /* 
             Uncomment the below line if you want to connect 
             to a non-metamask account
@@ -48,44 +48,60 @@ Note that you can also pass in multiple token Ids to associate multiple tokens t
 2. Calls the [Hedera SDK Associate Tokens API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/associate-tokens-to-an-account) to associate the account with the token Ids that are passed in parameters. This works for associating both fungible and non-fungible tokens.
 3. Returns the transaction receipt as response.
 
-Some example responses:
+<figure><img src="../../../.gitbook/assets/Untitled.png" alt=""><figcaption></figcaption></figure>
 
-For a hedera account id `0.0.4559`:
+Some example responses:
 
 ```json
 {
-  "currentAccount": {
-    "hederaAccountId": "0.0.4559",
-    "hederaEvmAddress": "0x3ba201df50314e4702d4d92b52d304ee63bfca23",
-    "balance": {
-      "hbars": 89.60420503,
-      "timestamp": "2024-02-01T21:35:21.826Z",
-      "tokens": {}
+    "currentAccount": {
+        "metamaskEvmAddress": "0x0b3628d1b838993b5fceec8b2a26502e7a8e5241",
+        "externalEvmAddress": "",
+        "hederaAccountId": "0.0.3581604",
+        "hederaEvmAddress": "0xca53f9c93d30e0b7212d67901e5a24fb090d542b",
+        "publicKey": "0x0206022cea4c6dd6d2e7263b8802253971de922f5380661d97cba82dee66f57ad6",
+        "balance": {
+            "hbars": 97.34885218,
+            "timestamp": "Thu, 25 Apr 2024 19:22:28 GMT",
+            "tokens": {
+                "0.0.4279119": {
+                    "balance": 50,
+                    "decimals": 1,
+                    "tokenId": "0.0.4279119",
+                    "name": "Tuum",
+                    "symbol": "TUUM",
+                    "tokenType": "FUNGIBLE_COMMON",
+                    "supplyType": "INFINITE",
+                    "totalSupply": "50",
+                    "maxSupply": "0"
+                }
+            }
+        },
+        "network": "testnet",
+        "mirrorNodeUrl": "https://testnet.mirrornode.hedera.com"
     },
-    "network": "testnet"
-  },
-  "receipt": {
-    "status": "SUCCESS",
-    "accountId": "",
-    "fileId": "",
-    "contractId": "",
-    "topicId": "",
-    "tokenId": "",
-    "scheduleId": "",
-    "exchangeRate": {
-      "hbars": 1,
-      "cents": 12,
-      "expirationTime": "Mon, 25 Nov 1963 17:31:44 GMT",
-      "exchangeRateInCents": 12
-    },
-    "topicSequenceNumber": "0",
-    "topicRunningHash": "",
-    "totalSupply": "0",
-    "scheduledTransactionId": "",
-    "serials": [],
-    "duplicates": [],
-    "children": []
-  }
+    "receipt": {
+        "status": "SUCCESS",
+        "accountId": "",
+        "fileId": "",
+        "contractId": "",
+        "topicId": "",
+        "tokenId": "",
+        "scheduleId": "",
+        "exchangeRate": {
+            "hbars": 30000,
+            "cents": 358543,
+            "expirationTime": "Thu, 25 Apr 2024 20:00:00 GMT",
+            "exchangeRateInCents": 11.951433333333334
+        },
+        "topicSequenceNumber": "0",
+        "topicRunningHash": "",
+        "totalSupply": "0",
+        "scheduledTransactionId": "",
+        "serials": [],
+        "duplicates": [],
+        "children": []
+    }
 }
 ```
 

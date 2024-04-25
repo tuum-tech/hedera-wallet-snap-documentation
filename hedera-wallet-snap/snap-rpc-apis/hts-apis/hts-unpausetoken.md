@@ -50,7 +50,7 @@ const unpauseTokenAPI = async () => {
 4. This action cannot be called if this token was created without passing the `pausePublicKey` parameter. Furthermore, this action must also be called using the same public key account.
 5. Returns the transaction receipt as response
 
-<figure><img src="../../../.gitbook/assets/Untitled (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled (4).png" alt=""><figcaption></figcaption></figure>
 
 An example response:
 
@@ -75,17 +75,6 @@ An example response:
                     "tokenType": "FUNGIBLE_COMMON",
                     "supplyType": "INFINITE",
                     "totalSupply": "50",
-                    "maxSupply": "0"
-                },
-                "0.0.3590430": {
-                    "balance": 1,
-                    "decimals": 1,
-                    "tokenId": "0.0.3590430",
-                    "name": "Token1",
-                    "symbol": "KP1",
-                    "tokenType": "FUNGIBLE_COMMON",
-                    "supplyType": "INFINITE",
-                    "totalSupply": "100",
                     "maxSupply": "0"
                 }
             }

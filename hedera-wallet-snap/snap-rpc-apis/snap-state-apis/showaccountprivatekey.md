@@ -28,7 +28,7 @@ const handleShowAccountPrivateKeyAPI = async () => {
 
 
 
-<figure><img src="../../../.gitbook/assets/Untitled (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled (7).png" alt=""><figcaption></figcaption></figure>
 
 Some example responses:
 

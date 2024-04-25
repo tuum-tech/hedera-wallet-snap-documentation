@@ -52,7 +52,7 @@ const pauseTokenAPI = async () => {
 
 
 
-<figure><img src="../../../.gitbook/assets/Untitled.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled (3).png" alt=""><figcaption></figcaption></figure>
 
 An example response:
 
@@ -77,17 +77,6 @@ An example response:
                     "tokenType": "FUNGIBLE_COMMON",
                     "supplyType": "INFINITE",
                     "totalSupply": "50",
-                    "maxSupply": "0"
-                },
-                "0.0.3590430": {
-                    "balance": 1,
-                    "decimals": 1,
-                    "tokenId": "0.0.3590430",
-                    "name": "Token1",
-                    "symbol": "KP1",
-                    "tokenType": "FUNGIBLE_COMMON",
-                    "supplyType": "INFINITE",
-                    "totalSupply": "100",
                     "maxSupply": "0"
                 }
             }
