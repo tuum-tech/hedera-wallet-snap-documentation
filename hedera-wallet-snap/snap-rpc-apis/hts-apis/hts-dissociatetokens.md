@@ -45,8 +45,9 @@ Note that you can also pass in multiple token Ids to dissociate multiple tokens 
 ## What the API does
 
 1. Retrieves the currently connected account the user has selected on Metamask. If it's the first time, a new [snap account](../../snap-account.md) is created and the account info is saved in snap state.
-2. Calls the[ Hedera SDK Disassociate Tokens API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/dissociate-tokens-from-an-account) to dissociate the account with the token Ids that are passed in parameters. This works for dissociating both fungible and non-fungible tokens.
-3. Returns the transaction receipt as response.
+2. Parses the arguments that were passed
+3. Calls the[ Hedera SDK Disassociate Tokens API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/dissociate-tokens-from-an-account) to dissociate the account with the token Ids that are passed in parameters. This works for dissociating both fungible and non-fungible tokens.
+4. Returns the transaction receipt as response.
 
 
 

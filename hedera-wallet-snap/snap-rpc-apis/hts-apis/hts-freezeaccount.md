@@ -46,7 +46,7 @@ const freezeAccountAPI = async () => {
 ## What the API does
 
 1. Retrieves the currently connected account the user has selected on Metamask. If it's the first time, a new [snap account](../../snap-account.md) is created and the account info is saved in snap state.
-2. Parses the arguments that were passed such as the tokenId.
+2. Parses the arguments that were passed such as the tokenId, accountId, etc
 3. Calls the [Hedera SDK Freeze Account API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/freeze-an-account) to freeze an account. It freezes transfers of the specified token for the account.&#x20;
 4. This action cannot be called if this token was created without passing the `freezePublicKey` parameter. Furthermore, this action must also be called using the same public key account.
 5. Returns the transaction receipt as response

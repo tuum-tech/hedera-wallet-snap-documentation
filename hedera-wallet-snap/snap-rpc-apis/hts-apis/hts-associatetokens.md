@@ -45,10 +45,11 @@ Note that you can also pass in multiple token Ids to associate multiple tokens t
 ## What the API does
 
 1. Retrieves the currently connected account the user has selected on Metamask. If it's the first time, a new [snap account](../../snap-account.md) is created and the account info is saved in snap state.
-2. Calls the [Hedera SDK Associate Tokens API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/associate-tokens-to-an-account) to associate the account with the token Ids that are passed in parameters. This works for associating both fungible and non-fungible tokens.
-3. Returns the transaction receipt as response.
+2. Parses the arguments that were passed
+3. Calls the [Hedera SDK Associate Tokens API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/associate-tokens-to-an-account) to associate the account with the token Ids that are passed in parameters. This works for associating both fungible and non-fungible tokens.
+4. Returns the transaction receipt as response.
 
-<figure><img src="../../../.gitbook/assets/Untitled (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled (8).png" alt=""><figcaption></figcaption></figure>
 
 Some example responses:
 
