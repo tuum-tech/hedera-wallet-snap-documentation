@@ -54,7 +54,7 @@ You must call this API with the account that has the ability to wipe tokens from
 4. This action cannot be called if this token was created without passing the `wipePublicKey` parameter. Furthermore, this action must also be called using the same public key account.
 5. Returns the transaction receipt as response
 
-<figure><img src="../../../.gitbook/assets/Untitled.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled (1).png" alt=""><figcaption></figcaption></figure>
 
 An example response:
 

@@ -52,7 +52,7 @@ const deleteTokenAPI = async () => {
 
 
 
-<figure><img src="../../../.gitbook/assets/Untitled (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 An example response:
 

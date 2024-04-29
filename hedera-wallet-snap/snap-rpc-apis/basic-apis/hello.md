@@ -33,7 +33,7 @@ Note that you do not need to pass in "mirrorNodeUrl" but if you do, the snap wil
 
 
 
-<figure><img src="../../../.gitbook/assets/Untitled (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Some example responses:
 
