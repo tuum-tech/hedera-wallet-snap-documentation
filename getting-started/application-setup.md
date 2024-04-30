@@ -1,13 +1,5 @@
 # Application Setup
 
-## Add @hashgraph/hedera-wallet-snap to package.json
-
-```bash
-npm install @hashgraph/hedera-wallet-snap@0.2.1
-or
-yarn add @hashgraph/hedera-wallet-snap@0.2.1
-```
-
 ## Check whether Metamask is installed(OPTIONAL)
 
 It's optional but recommended to verify whether MetaMask is installed by the users because Snaps are only available within Metamask. The choice is up to developers on how they want to handle this aspect of the integration.
