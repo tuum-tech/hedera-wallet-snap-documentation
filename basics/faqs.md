@@ -28,18 +28,26 @@ Snaps run in a sandboxed environment and use a permissions model to protect your
 
 To interact with the snap and perform actions you need to go through a dapp. We have built a dedicated [dapp](https://pulse.tuum.tech/) that you can access here but you're also welcome to build your own dapps integrating with the Hedera Wallet Snap.
 
-## Is the Hedera Wallet Snap available on MetaMask Mobile?
+## Why is my Snap address different from my MetaMask address?
 
-Snaps are currently only available on MetaMask. MetaMask is a browser-based extension. This means the Hedera Wallet snap, or any other snap, is currently not available on MetaMask Mobile however, there are plans from the Metamask team to release the Snap feature on Metamask mobile in the near future.
+MetaMask does not allow Snaps to access the private keys of MetaMask accounts so Hedera Wallet Snap creates a new account with a private key. Note that neither you nor any Dapps will be able to view the private key of this Snap account as it's stored within snap sandboxed storage and is not accessible. This new Snap account is still associated with the currently connected MetaMask account however so you can always get back to your Snap account by connecting to this MetaMask account in the future.
+
+## How can I export the private key of my snap account?
+
+Check out the section: [Show Private Key](../hedera-wallet-snap/snap-rpc-apis/snap-state-apis/showaccountprivatekey.md) for more details on how to do this.
+
+## How can I connect to my MetaMask account?
+
+Since MetaMask does not allow Snaps to access the private keys of MetaMask accounts, Hedera Wallet Snap creates a new account. However, the Snap does offer flexibility in that it also lets you connect to an external account by directly importing your private key to the Snap. Note that the Snap creates a MetaMask dialog box for you to enter your private key so this key is not shared with any applications. Refer to [Snap RPC APIs](../hedera-wallet-snap/snap-rpc-apis/) on how to enable this in your Dapp.
 
 ## What happens if I delete the snap in MetaMask?
 
 Reinstalling the snap will automatically recover your account provided you use the same Metamask account to configure the account again via your DApp.
 
-## Why is my Snap address different from my MetaMask address?
+## Is the Hedera Wallet Snap available on MetaMask Mobile?
 
-MetaMask does not allow Snaps to access the private keys of MetaMask accounts so Hedera Wallet Snap creates a new account with a private key. Note that neither you nor any Dapps will be able to view the private key of this Snap account as it's stored within snap sandboxed storage and is not accessible. This new Snap account is still associated with the currently connected MetaMask account however so you can always get back to your Snap account by connecting to this MetaMask account in the future.
+Snaps are currently only available on MetaMask. MetaMask is a browser-based extension. This means the Hedera Wallet snap, or any other snap, is currently not available on MetaMask Mobile however, there are plans from the Metamask team to release the Snap feature on Metamask mobile in the near future.
 
-## How can I connect to my MetaMask account?
+##
 
-Since MetaMask does not allow Snaps to access the private keys of MetaMask accounts, Hedera Wallet Snap creates a new account. However, the Snap does offer flexibility in that it also lets you connect to an external account by directly importing your private key to the Snap. Note that the Snap creates a MetaMask dialog box for you to enter your private key so this key is not shared with any applications. Refer to [Snap RPC APIs](../hedera-wallet-snap/snap-rpc-apis/) on how to enable this in your Dapp.
+##
