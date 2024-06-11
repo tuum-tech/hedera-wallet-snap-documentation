@@ -41,17 +41,33 @@
 * [x] Pause and unpause a Digital Asset
 * [x] Wipe a Digital Asset
 
-## Hedera File Service
-
-*
-
 ## Hedera Smart Contract Service
 
-*
+* [x] Create a smart contract
+* [x] Update a smart contract
+* [x] Delete a smart contract
+* [x] Call a smart contract function
+* [x] Get a smart contract function
+* [x] Get smart contract bytecode
+* [x] Get smart contract info
 
 ## Hedera Consensus Service
 
-*
+* [ ] Create a topic
+* [ ] Update a topic
+* [ ] Submit a message
+* [ ] Delete a topic
+* [ ] Get topic messages
+* [ ] Get topic info
+
+## Hedera File Service
+
+* [ ] Create a file
+* [ ] Append to a file
+* [ ] Update a file
+* [ ] Delete a file
+* [ ] Get file contents
+* [ ] Get file info
 
 ## Miscellaneous Functions
 
