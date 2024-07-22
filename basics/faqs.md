@@ -4,7 +4,7 @@
 
 **For developers integrating the snap:**
 
-1. To get started, make sure you have [MetaMask](https://metamask.io/) first and then install the Hedera Wallet snap from the [MetaMask Snaps Directory](https://snaps.metamask.io/snap/npm/hashgraph/hedera-wallet-snap/). Note that as of now, v0.4.2 is the most stable version so we recommend you use this in your application.
+1. To get started, make sure you have [MetaMask](https://metamask.io/) first and then install the Hedera Wallet snap from the [MetaMask Snaps Directory](https://snaps.metamask.io/snap/npm/hashgraph/hedera-wallet-snap/). Note that as of now, v0.5.0 is the most stable version so we recommend you use this in your application.
 2. Note that snaps don't have user interface like MetaMask does so the snap needs to be installed by the user first and then the dapp can call Metamask API to interact with the snap. To learn more about how you can do this in your own app, look at an [example site code](https://github.com/hashgraph/hedera-metamask-snaps/tree/main/packages/hedera-wallet-snap/packages/site) that has the Hedera Wallet Snap installation functionality or go through the live demos within the [Snap RPC APIs](../hedera-wallet-snap/snap-rpc-apis/) section where you can check out the working html/js code to do this.
 
 **For users using the snap:**
@@ -47,7 +47,3 @@ Reinstalling the snap will automatically recover your account provided you use t
 ## Is the Hedera Wallet Snap available on MetaMask Mobile?
 
 Snaps are currently only available on MetaMask. MetaMask is a browser-based extension. This means the Hedera Wallet snap, or any other snap, is currently not available on MetaMask Mobile however, there are plans from the Metamask team to release the Snap feature on Metamask mobile in the near future.
-
-##
-
-##

@@ -53,27 +53,24 @@
 
 ## Hedera Consensus Service
 
-* [ ] Create a topic
-* [ ] Update a topic
-* [ ] Submit a message
-* [ ] Delete a topic
-* [ ] Get topic messages
-* [ ] Get topic info
+* [x] Create a topic
+* [x] Update a topic
+* [x] Submit a message
+* [x] Delete a topic
+* [x] Get topic messages
+* [x] Get topic info
 
-## Hedera File Service
-
-* [ ] Create a file
-* [ ] Append to a file
-* [ ] Update a file
-* [ ] Delete a file
-* [ ] Get file contents
-* [ ] Get file info
-
-## Miscellaneous Functions
+## Other functions
 
 * [x] Sign any message using user's snap account(similiar to how SIWE works with Metamask)
 * [x] Perform atomic swaps between two parties between any two tokens
 * [x] Show private key of the snap account on Metamask dialog box
+
+## Miscellaneous
+
+* [ ] Snap static home page UI within MetaMask
+* [ ] Update Snap dialog boxes with images and static pages to make it more UX friendly
+* [ ] Send notifications to MetaMask for actionable information
 
 ## Example website
 
