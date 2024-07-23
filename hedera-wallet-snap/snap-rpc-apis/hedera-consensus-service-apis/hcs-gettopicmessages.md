@@ -1,4 +1,4 @@
-# hts/updateToken
+# hcs/getTopicMessages
 
 ## How to call the API from an app
 
@@ -9,7 +9,7 @@ Then, depending on whether you're trying to connect to a metamask account or a n
 ```tsx
 const snapId = `npm:@hashgraph/hedera-wallet-snap`
 
-const updateTokenAPI = async () => {
+const snapAPI = async () => {
   const externalAccountParams = {
     externalAccount: {
       accountIdOrEvmAddress: '0.0.12345',
@@ -22,24 +22,11 @@ const updateTokenAPI = async () => {
     params: {
       snapId,
       request: {
-        method: 'hts/createToken',
+        method: 'hcs/getTopicMessages',
         params: {
           network: 'testnet',
-          tokenId: '0.0.4284930'
-          name?: 'NewTuum',
-          symbol?: 'NEWTUUM',
-          tokenMemo?, // Optional param - type: string
-          treasuryAccountId?: // Optional param - type: string
-          adminPublicKey?, // Optional param - type: string
-          kycPublicKey?, // Optional param - type: string
-          freezePublicKey?, // Optional param - type: string
-          pausePublicKey?, // Optional param - type: string
-          wipePublicKey?, // Optional param - type: string
-          supplyPublicKey?, // Optional param - type: string
-          feeSchedulePublicKey?, // Optional param - type: string
-          expirationTime?, // Optional param - type: string
-          autoRenewAccountId?, // Optional param - type: string
-          autoRenewPeriod?, // Optional param - type: number
+          topicId: '0.0.4617270',
+          sequenceNumber?, // Optional param - type: number
           /* 
             Uncomment the below line if you want to connect 
             to a non-metamask account
@@ -53,20 +40,15 @@ const updateTokenAPI = async () => {
 ```
 
 {% hint style="info" %}
-* `At least one optional parameter must be passed before calling this API or it will fail`
+* If you pass in `sequenceNumber`, it will only retrieve content for that specific message.
 {% endhint %}
 
 ## What the API does
 
 1. Retrieves the currently connected account the user has selected on Metamask. If it's the first time, a new [snap account](../../snap-account.md) is created and the account info is saved in snap state.
-2. Parses the arguments that were passed
-3. Calls the [Hedera SDK Update Token API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/update-a-token) to update the properties of the existing token. The admin key must sign this transaction to update any of the token properties. With one exception. All secondary keys can sign a transaction to change themselves. The admin key can update exisitng keys, but cannot add new keys if they were not set during the creation of the token. If no value is given for a field, that field is left unchanged.&#x20;
-4. This action cannot be called if this token was created without the admin key being set during token creation. Furthermore, this action must also be called using the same public key account.
-5. Returns the transaction receipt as response
-
-
-
-<figure><img src="../../../.gitbook/assets/Untitled (2).png" alt=""><figcaption></figcaption></figure>
+2. Parses the arguments that were passed.
+3. Calls the [Hedera Mirror Node Get Topic Messages API](https://docs.hedera.com/hedera/sdks-and-apis/rest-api#topics) to retrieve messages written to the topic from a mirror node.
+4. Returns the transaction receipt as response
 
 An example response:
 
@@ -79,18 +61,18 @@ An example response:
         "hederaEvmAddress": "0xca53f9c93d30e0b7212d67901e5a24fb090d542b",
         "publicKey": "0x0206022cea4c6dd6d2e7263b8802253971de922f5380661d97cba82dee66f57ad6",
         "balance": {
-            "hbars": 88.14341532,
-            "timestamp": "Fri, 26 Apr 2024 17:29:26 GMT",
+            "hbars": 86.77513646,
+            "timestamp": "Tue, 23 Jul 2024 18:34:03 GMT",
             "tokens": {
-                "0.0.4279119": {
-                    "balance": 50,
+                "0.0.4284934": {
+                    "balance": 0,
                     "decimals": 1,
-                    "tokenId": "0.0.4279119",
-                    "name": "Tuum",
-                    "symbol": "TUUM",
+                    "tokenId": "0.0.4284934",
+                    "name": "Pulse",
+                    "symbol": "PULSE",
                     "tokenType": "FUNGIBLE_COMMON",
                     "supplyType": "INFINITE",
-                    "totalSupply": "50",
+                    "totalSupply": "0",
                     "maxSupply": "0"
                 }
             }
@@ -98,34 +80,33 @@ An example response:
         "network": "testnet",
         "mirrorNodeUrl": "https://testnet.mirrornode.hedera.com"
     },
-    "receipt": {
-        "status": "SUCCESS",
-        "accountId": "",
-        "fileId": "",
-        "contractId": "",
-        "topicId": "",
-        "tokenId": "",
-        "scheduleId": "",
-        "exchangeRate": {
-            "hbars": 30000,
-            "cents": 331526,
-            "expirationTime": "Fri, 26 Apr 2024 18:00:00 GMT",
-            "exchangeRateInCents": 11.050866666666666
-        },
-        "topicSequenceNumber": "0",
-        "topicRunningHash": "",
-        "totalSupply": "0",
-        "scheduledTransactionId": "",
-        "serials": [],
-        "duplicates": [],
-        "children": []
-    }
+    "topicMessages": [
+        {
+            "chunk_info": {
+                "initial_transaction_id": {
+                    "account_id": "0.0.3581604",
+                    "nonce": 0,
+                    "scheduled": false,
+                    "transaction_valid_start": "Tue, 23 Jul 2024 18:33:50 GMT"
+                },
+                "number": 1,
+                "total": 1
+            },
+            "consensus_timestamp": "Tue, 23 Jul 2024 18:34:03 GMT",
+            "message": "Zmlyc3QgbWVzc2FnZQ==",
+            "payer_account_id": "0.0.3581604",
+            "running_hash": "u6lxAMZ0d19vh2GCc5gNGClxzqQeK2Zd7TZorA2WiaaKGlENN7nYtDAktM+0Ly7T",
+            "running_hash_version": 3,
+            "sequence_number": 1,
+            "topic_id": "0.0.4617270"
+        }
+    ]
 }
 ```
 
 ## Live Demo on CodePen
 
-{% embed url="https://codepen.io/kpachhai/pen/PogLBmg" %}
+{% embed url="https://codepen.io/kpachhai/pen/zYVBeQo" %}
 
 <details>
 

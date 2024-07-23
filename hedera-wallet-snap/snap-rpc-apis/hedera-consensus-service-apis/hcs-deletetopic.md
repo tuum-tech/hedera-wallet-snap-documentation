@@ -1,4 +1,4 @@
-# hts/deleteToken
+# hcs/deleteTopic
 
 ## How to call the API from an app
 
@@ -9,7 +9,7 @@ Then, depending on whether you're trying to connect to a metamask account or a n
 ```tsx
 const snapId = `npm:@hashgraph/hedera-wallet-snap`
 
-const deleteTokenAPI = async () => {
+const snapAPI = async () => {
   const externalAccountParams = {
     externalAccount: {
       accountIdOrEvmAddress: '0.0.12345',
@@ -22,10 +22,10 @@ const deleteTokenAPI = async () => {
     params: {
       snapId,
       request: {
-        method: 'hts/deleteToken',
+        method: 'hcs/deleteTopic',
         params: {
           network: 'testnet',
-          tokenId: '0.0.4280233',
+          topicId: '0.0.4617270',
           /* 
             Uncomment the below line if you want to connect 
             to a non-metamask account
@@ -39,20 +39,18 @@ const deleteTokenAPI = async () => {
 ```
 
 {% hint style="info" %}
-* You must call this API with an admin account. This is the account that had created the token originally
+* You must call this API using the `adminKey` that was set when the topic was created.
 {% endhint %}
 
 ## What the API does
 
 1. Retrieves the currently connected account the user has selected on Metamask. If it's the first time, a new [snap account](../../snap-account.md) is created and the account info is saved in snap state.
 2. Parses the arguments that were passed such as the tokenId.
-3. Calls the [Hedera SDK Delete Token API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/delete-a-token) to delete a token . Deleing a token marks a token as deleted, though it will remain in the ledger. The operation must be signed by the specified Admin Key of the Token. If the Admin Key is not set, the Transaction will result in TOKEN\_IS\_IMMUTABlE. Once deleted update, mint, burn, wipe, freeze, unfreeze, grant KYC, revoke KYC and token transfer transactions will resolve to TOKEN\_WAS\_DELETED.
-4. This action cannot be called if this token was created without the admin key being set during token creation. Furthermore, this action must also be called using the same public key account.
+3. Calls the [Hedera SDK Delete Topic API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/consensus-service/delete-a-topic) to delete a topic. Deleing a topic marks a token as deleted, though it will remain in the ledger. The operation must be signed by the specified Admin Key of the topic.
+4. This action cannot be called if this topic was created without the admin key being set during topic creation.&#x20;
 5. Returns the transaction receipt as response
 
-
-
-<figure><img src="../../../.gitbook/assets/Untitled (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled (21).png" alt=""><figcaption></figcaption></figure>
 
 An example response:
 
@@ -65,19 +63,18 @@ An example response:
         "hederaEvmAddress": "0xca53f9c93d30e0b7212d67901e5a24fb090d542b",
         "publicKey": "0x0206022cea4c6dd6d2e7263b8802253971de922f5380661d97cba82dee66f57ad6",
         "balance": {
-            "hbars": 88.15249915,
-            "timestamp": "Fri, 26 Apr 2024 17:28:35 GMT",
+            "hbars": 86.77364099,
+            "timestamp": "Tue, 23 Jul 2024 18:47:04 GMT",
             "tokens": {
-
-                "0.0.4279119": {
-                    "balance": 50,
+                "0.0.3582047": {
+                    "balance": 1,
                     "decimals": 1,
-                    "tokenId": "0.0.4279119",
-                    "name": "Tuum",
-                    "symbol": "TUUM",
+                    "tokenId": "0.0.3582047",
+                    "name": "PACHHAI",
+                    "symbol": "PACHHAI",
                     "tokenType": "FUNGIBLE_COMMON",
                     "supplyType": "INFINITE",
-                    "totalSupply": "50",
+                    "totalSupply": "100",
                     "maxSupply": "0"
                 }
             }
@@ -95,9 +92,9 @@ An example response:
         "scheduleId": "",
         "exchangeRate": {
             "hbars": 30000,
-            "cents": 331526,
-            "expirationTime": "Fri, 26 Apr 2024 18:00:00 GMT",
-            "exchangeRateInCents": 11.050866666666666
+            "cents": 202259,
+            "expirationTime": "Tue, 23 Jul 2024 19:00:00 GMT",
+            "exchangeRateInCents": 6.741966666666666
         },
         "topicSequenceNumber": "0",
         "topicRunningHash": "",
@@ -112,9 +109,7 @@ An example response:
 
 ## Live Demo on CodePen
 
-
-
-{% embed url="https://codepen.io/kpachhai/pen/mdgojyj" %}
+{% embed url="https://codepen.io/kpachhai/pen/QWXEoWL" %}
 
 <details>
 

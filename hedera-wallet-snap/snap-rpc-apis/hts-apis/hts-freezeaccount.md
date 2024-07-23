@@ -1,4 +1,4 @@
-# hts/dissociateTokens
+# hts/freezeAccount
 
 ## How to call the API from an app
 
@@ -9,7 +9,7 @@ Then, depending on whether you're trying to connect to a metamask account or a n
 ```tsx
 const snapId = `npm:@hashgraph/hedera-wallet-snap`
 
-const dissociateTokensAPI = async () => {
+const freezeAccountAPI = async () => {
   const externalAccountParams = {
     externalAccount: {
       accountIdOrEvmAddress: '0.0.12345',
@@ -22,10 +22,11 @@ const dissociateTokensAPI = async () => {
     params: {
       snapId,
       request: {
-        method: 'hts/dissociateTokens',
+        method: 'hts/freezeAccount',
         params: {
           network: 'testnet',
-          tokenIds: ['0.0.4280233'],
+          tokenId: '0.0.4280233',
+          accountId: '0.0.1',
           /* 
             Uncomment the below line if you want to connect 
             to a non-metamask account
@@ -39,21 +40,22 @@ const dissociateTokensAPI = async () => {
 ```
 
 {% hint style="info" %}
-Note that you can also pass in multiple token Ids to dissociate multiple tokens from an account.&#x20;
+* You must call this API with the account that has the ability to freeze an account. This is defined during account creation with `freezePublicKey` parameter.
 {% endhint %}
 
 ## What the API does
 
 1. Retrieves the currently connected account the user has selected on Metamask. If it's the first time, a new [snap account](../../snap-account.md) is created and the account info is saved in snap state.
-2. Parses the arguments that were passed
-3. Calls the[ Hedera SDK Disassociate Tokens API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/dissociate-tokens-from-an-account) to dissociate the account with the token Ids that are passed in parameters. This works for dissociating both fungible and non-fungible tokens.
-4. Returns the transaction receipt as response.
+2. Parses the arguments that were passed such as the tokenId, accountId, etc
+3. Calls the [Hedera SDK Freeze Account API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/freeze-an-account) to freeze an account. It freezes transfers of the specified token for the account.&#x20;
+4. This action cannot be called if this token was created without passing the `freezePublicKey` parameter. Furthermore, this action must also be called using the same public key account.
+5. Returns the transaction receipt as response
 
 
 
-<figure><img src="../../../.gitbook/assets/Untitled (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-Some example responses:
+An example response:
 
 ```json
 {
@@ -64,8 +66,8 @@ Some example responses:
         "hederaEvmAddress": "0xca53f9c93d30e0b7212d67901e5a24fb090d542b",
         "publicKey": "0x0206022cea4c6dd6d2e7263b8802253971de922f5380661d97cba82dee66f57ad6",
         "balance": {
-            "hbars": 96.9349371,
-            "timestamp": "Thu, 25 Apr 2024 19:28:42 GMT",
+            "hbars": 96.50396084,
+            "timestamp": "Thu, 25 Apr 2024 19:49:37 GMT",
             "tokens": {
                 "0.0.4279119": {
                     "balance": 50,
@@ -110,9 +112,7 @@ Some example responses:
 
 ## Live Demo on CodePen
 
-
-
-{% embed url="https://codepen.io/kpachhai/pen/GRLeZeX" %}
+{% embed url="https://codepen.io/kpachhai/pen/wvZOGLZ" %}
 
 <details>
 

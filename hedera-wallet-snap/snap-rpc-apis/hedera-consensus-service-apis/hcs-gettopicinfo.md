@@ -1,20 +1,36 @@
-# hello
+# hcs/getTopicInfo
 
 ## How to call the API from an app
+
+Hedera Wallet Snap connects to your currently connected Metamask account by default. To learn how apps can connect to Hedera Wallet Snap using a non-metamask(external) account, refer to this [documentation](../#connecting-to-a-non-metamask-external-account).&#x20;
+
+Then, depending on whether you're trying to connect to a metamask account or a non-metamask account, you can call the snap API in the following way:
 
 ```tsx
 const snapId = `npm:@hashgraph/hedera-wallet-snap`
 
-const handleHelloAPI = async () => {
+const snapAPI = async () => {
+  const externalAccountParams = {
+    externalAccount: {
+      accountIdOrEvmAddress: '0.0.12345',
+      curve: 'ED25519'
+    }
+  }
+
   await window.ethereum.request({
     method: 'wallet_invokeSnap',
     params: {
       snapId,
       request: {
-        method: 'hello',
+        method: 'hcs/getTopicInfo',
         params: {
           network: 'testnet',
-          mirrorNodeUrl: 'https://testnet.mirrornode.hedera.com'
+          topicId: '0.0.4617270',
+          /* 
+            Uncomment the below line if you want to connect 
+            to a non-metamask account
+          */
+          // ...externalAccountParams
         }
       }
     }
@@ -22,25 +38,19 @@ const handleHelloAPI = async () => {
 }
 ```
 
-{% hint style="info" %}
-Note that you do not need to pass in "mirrorNodeUrl" but if you do, the snap will use that URL instead of the default public Hedera mirror nodes which may have rate limits associated with it.
-{% endhint %}
-
 ## What the API does
 
 1. Retrieves the currently connected account the user has selected on Metamask. If it's the first time, a new [snap account](../../snap-account.md) is created and the account info is saved in snap state.
-2. Displays an alert dialog blox on Metamask with some content.
+2. Parses the arguments that were passed.
+3. Calls the [Hedera SDK Get Topic Info API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/consensus-service/get-topic-info) to retrieve details about the topic from the ledger.&#x20;
+4. Returns the transaction receipt as response
 
+<figure><img src="../../../.gitbook/assets/Untitled (3).png" alt=""><figcaption></figcaption></figure>
 
-
-<figure><img src="../../../.gitbook/assets/Untitled (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
-
-Some example responses:
-
-For a hedera account id `0.0.3581604`:
+An example response:
 
 ```json
- {
+{
     "currentAccount": {
         "metamaskEvmAddress": "0x0b3628d1b838993b5fceec8b2a26502e7a8e5241",
         "externalEvmAddress": "",
@@ -48,15 +58,15 @@ For a hedera account id `0.0.3581604`:
         "hederaEvmAddress": "0xca53f9c93d30e0b7212d67901e5a24fb090d542b",
         "publicKey": "0x0206022cea4c6dd6d2e7263b8802253971de922f5380661d97cba82dee66f57ad6",
         "balance": {
-            "hbars": 5.67332072,
-            "timestamp": "Wed, 13 Mar 2024 20:37:05 GMT",
+            "hbars": 86.77513646,
+            "timestamp": "Tue, 23 Jul 2024 18:34:03 GMT",
             "tokens": {
-                "0.0.3590430": {
+                "0.0.3582047": {
                     "balance": 1,
                     "decimals": 1,
-                    "tokenId": "0.0.3590430",
-                    "name": "Token1",
-                    "symbol": "KP1",
+                    "tokenId": "0.0.3582047",
+                    "name": "PACHHAI",
+                    "symbol": "PACHHAI",
                     "tokenType": "FUNGIBLE_COMMON",
                     "supplyType": "INFINITE",
                     "totalSupply": "100",
@@ -66,25 +76,28 @@ For a hedera account id `0.0.3581604`:
         },
         "network": "testnet",
         "mirrorNodeUrl": "https://testnet.mirrornode.hedera.com"
+    },
+    "topicInfo": {
+        "memo": "KP version 2",
+        "runningHash": "bba97100c674775f6f87618273980d182971cea41e2b665ded3668ac0d9689a68a1a510d37b9d8b43024b4cfb42f2ed3",
+        "sequenceNumber": 1,
+        "expirationTime": "Sun, 20 Oct 2024 18:00:45 GMT",
+        "adminKey": {
+            "key": "0206022cea4c6dd6d2e7263b8802253971de922f5380661d97cba82dee66f57ad6"
+        },
+        "submitKey": {
+            "key": ""
+        },
+        "autoRenewAccountId": "",
+        "autoRenewPeriod": "7776000",
+        "ledgerId": "testnet"
     }
 }
 ```
 
-
-
-{% hint style="info" %}
-Note that if you're connecting to the snap using MetaMask wallet(default option), `metamaskEvmAddress` will show your metamask wallet address and if you're connecting to the snap using an external account(importing using private key directly),`externalEvmAddress` will be empty.
-{% endhint %}
-
-{% hint style="info" %}
-Note that if you're connecting to the snap using MetaMask wallet(default option), the `metamaskEvmAddress` and`hederaEvmAddress`will be different. This is because Hedera Wallet Snap creates a snap internal wallet as the snap has no direct access to the MetaMask wallet's private key.&#x20;
-
-Conversely, if you're connecting to the snap using an external account(importing using private key directly), `externalEvmAddress` and`hederaEvmAddress`will be the same. This is because Hedera Wallet Snap has access to the private key of the external account so there is no need to create a snap internal wallet.
-{% endhint %}
-
 ## Live Demo on CodePen
 
-{% embed url="https://codepen.io/kpachhai/pen/poGPRmw" %}
+{% embed url="https://codepen.io/kpachhai/pen/NWZroZV" %}
 
 <details>
 

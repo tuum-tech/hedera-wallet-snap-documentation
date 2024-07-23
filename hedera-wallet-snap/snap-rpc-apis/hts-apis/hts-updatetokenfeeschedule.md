@@ -1,4 +1,4 @@
-# hts/pauseToken
+# hts/updateTokenFeeSchedule
 
 ## How to call the API from an app
 
@@ -9,7 +9,7 @@ Then, depending on whether you're trying to connect to a metamask account or a n
 ```tsx
 const snapId = `npm:@hashgraph/hedera-wallet-snap`
 
-const pauseTokenAPI = async () => {
+const initiateSwapAPI = async () => {
   const externalAccountParams = {
     externalAccount: {
       accountIdOrEvmAddress: '0.0.12345',
@@ -17,15 +17,24 @@ const pauseTokenAPI = async () => {
     }
   }
 
+  const tokenCustomFee = {
+    feeCollectorAccountId: '0.0.35453',
+    hbarAmount?, // Optional param - type number - Set the amount of HBAR to be collected
+    tokenAmount?, // Optional param - type number - Sets the amount of tokens to be collected as the fee
+    denominatingTokenId?, // Optional param - type string - The ID of the token used to charge the fee. The denomination of the fee is taken as HBAR if left unset
+    allCollectorsAreExempt?, // Optional param - type boolean - If true, exempts all the token's fee collector accounts from this fee
+  }
+
   await window.ethereum.request({
     method: 'wallet_invokeSnap',
     params: {
       snapId,
       request: {
-        method: 'hts/pauseToken',
+        method: 'hts/updateTokenFeeSchedule',
         params: {
           network: 'testnet',
-          tokenId: '0.0.4280233',
+          tokenId: '0.0.4535645',
+          customFees: [tokenCustomFee],
           /* 
             Uncomment the below line if you want to connect 
             to a non-metamask account
@@ -39,20 +48,20 @@ const pauseTokenAPI = async () => {
 ```
 
 {% hint style="info" %}
-* You must call this API with the account that has the ability to pause. This is defined during account creation with `pausePublicKey` parameter.
+You must call this API with the account that has the ability to update token fee schedule. This is defined during account creation with `feeSchedulePublicKey` parameter.
 {% endhint %}
 
 ## What the API does
 
 1. Retrieves the currently connected account the user has selected on Metamask. If it's the first time, a new [snap account](../../snap-account.md) is created and the account info is saved in snap state.
-2. Parses the arguments that were passed such as the tokenId.
-3. Calls the [Hedera SDK Pause Token API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/pause-a-token) to pause a token. A token pause transaction prevents the token from being involved in any kind of operation. The token's pause key is required to sign the transaction. This is a key that is specified during the creation of a token. If a token has no pause key, you will not be able to pause the token. If the pause key was not set during the creation of a token, you will not be able to update the token to add this key.
-4. This action cannot be called if this token was created without passing the `pausePublicKey` parameter. Furthermore, this action must also be called using the same public key account.
+2. Parses the arguments that were passed
+3. Calls the [Hedera Token Update Token Fee Schedule API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/update-a-fee-schedule) to update the custom fees for a given token. If the token does not have a fee schedule, the network response returned will be CUSTOM\_SCHEDULE\_ALREADY\_HAS\_NO\_FEES. You will need to sign the transaction with the fee schedule key to update the fee schedule for the token.
+4. This action cannot be called if this token was created without passing the `feeScheedulePublicKey` parameter. Furthermore, this action must also be called using the same public key account.
 5. Returns the transaction receipt as response
 
 
 
-<figure><img src="../../../.gitbook/assets/Untitled (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled (4).png" alt=""><figcaption></figcaption></figure>
 
 An example response:
 
@@ -65,15 +74,15 @@ An example response:
         "hederaEvmAddress": "0xca53f9c93d30e0b7212d67901e5a24fb090d542b",
         "publicKey": "0x0206022cea4c6dd6d2e7263b8802253971de922f5380661d97cba82dee66f57ad6",
         "balance": {
-            "hbars": 97.36572412,
-            "timestamp": "Thu, 25 Apr 2024 19:08:45 GMT",
+            "hbars": 88.13421155,
+            "timestamp": "Fri, 26 Apr 2024 17:50:12 GMT",
             "tokens": {
                 "0.0.4279119": {
                     "balance": 50,
                     "decimals": 1,
                     "tokenId": "0.0.4279119",
-                    "name": "Tuum",
-                    "symbol": "TUUM",
+                    "name": "NewTuum",
+                    "symbol": "NEWTUUM",
                     "tokenType": "FUNGIBLE_COMMON",
                     "supplyType": "INFINITE",
                     "totalSupply": "50",
@@ -94,9 +103,9 @@ An example response:
         "scheduleId": "",
         "exchangeRate": {
             "hbars": 30000,
-            "cents": 358543,
-            "expirationTime": "Thu, 25 Apr 2024 20:00:00 GMT",
-            "exchangeRateInCents": 11.951433333333334
+            "cents": 333977,
+            "expirationTime": "Fri, 26 Apr 2024 20:00:00 GMT",
+            "exchangeRateInCents": 11.132566666666667
         },
         "topicSequenceNumber": "0",
         "topicRunningHash": "",
@@ -111,7 +120,7 @@ An example response:
 
 ## Live Demo on CodePen
 
-{% embed url="https://codepen.io/kpachhai/pen/BaEbKJO" %}
+{% embed url="https://codepen.io/kpachhai/pen/WNWmgLd" %}
 
 <details>
 

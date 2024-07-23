@@ -1,4 +1,4 @@
-# hts/unpauseToken
+# hts/wipeToken
 
 ## How to call the API from an app
 
@@ -9,7 +9,7 @@ Then, depending on whether you're trying to connect to a metamask account or a n
 ```tsx
 const snapId = `npm:@hashgraph/hedera-wallet-snap`
 
-const unpauseTokenAPI = async () => {
+const wipeTokenAPI = async () => {
   const externalAccountParams = {
     externalAccount: {
       accountIdOrEvmAddress: '0.0.12345',
@@ -22,10 +22,14 @@ const unpauseTokenAPI = async () => {
     params: {
       snapId,
       request: {
-        method: 'hts/unpauseToken',
+        method: 'hts/wipeToken',
         params: {
           network: 'testnet',
-          tokenId: '0.0.4280233',
+          assetType: 'TOKEN', // TOKEN | NFT
+          tokenId: '0.0.4279119',
+          accountId: '0.0.1',
+          amount: 100,
+          serialNumbers?, // Optional param - only needed for NFTs and is of type Number[]
           /* 
             Uncomment the below line if you want to connect 
             to a non-metamask account
@@ -39,18 +43,18 @@ const unpauseTokenAPI = async () => {
 ```
 
 {% hint style="info" %}
-* You must call this API with the account that has the ability to unpause. This is defined during account creation with `pausePublicKey` parameter.
+You must call this API with the account that has the ability to wipe tokens from an account. This is defined during account creation with `wipePublicKey` parameter.
 {% endhint %}
 
 ## What the API does
 
 1. Retrieves the currently connected account the user has selected on Metamask. If it's the first time, a new [snap account](../../snap-account.md) is created and the account info is saved in snap state.
-2. Parses the arguments that were passed such as the tokenId.
-3. Calls the [Hedera SDK Unpause Token API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/unpause-a-token) to unpause a token. A token unpause transaction is a transaction that unpauses the token that was previously disabled from participating in transactions. The token's pause key is required to sign the transaction. Once the unpause transaction is submitted the token pause status is updated to `unpause`.
-4. This action cannot be called if this token was created without passing the `pausePublicKey` parameter. Furthermore, this action must also be called using the same public key account.
+2. Parses the arguments that were passed such as the tokenId, accountId, amount, etc.
+3. Calls the [Hedera SDK Wipe Token API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/wipe-a-token) to wipes the provided amount of fungible or non-fungible tokens from the specified Hedera account. This transaction does not delete tokens from the treasury account. Wiping an account's tokens burns the tokens and decreases the total supply.
+4. This action cannot be called if this token was created without passing the `wipePublicKey` parameter. Furthermore, this action must also be called using the same public key account.
 5. Returns the transaction receipt as response
 
-<figure><img src="../../../.gitbook/assets/Untitled (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 An example response:
 
@@ -63,8 +67,8 @@ An example response:
         "hederaEvmAddress": "0xca53f9c93d30e0b7212d67901e5a24fb090d542b",
         "publicKey": "0x0206022cea4c6dd6d2e7263b8802253971de922f5380661d97cba82dee66f57ad6",
         "balance": {
-            "hbars": 97.35728815,
-            "timestamp": "Thu, 25 Apr 2024 19:11:16 GMT",
+            "hbars": 96.02237649,
+            "timestamp": "Fri, 26 Apr 2024 17:18:14 GMT",
             "tokens": {
                 "0.0.4279119": {
                     "balance": 50,
@@ -75,6 +79,17 @@ An example response:
                     "tokenType": "FUNGIBLE_COMMON",
                     "supplyType": "INFINITE",
                     "totalSupply": "50",
+                    "maxSupply": "0"
+                },
+                "0.0.4284930": {
+                    "balance": 50,
+                    "decimals": 1,
+                    "tokenId": "0.0.4284930",
+                    "name": "Pulse",
+                    "symbol": "PULSE",
+                    "tokenType": "FUNGIBLE_COMMON",
+                    "supplyType": "INFINITE",
+                    "totalSupply": "100",
                     "maxSupply": "0"
                 }
             }
@@ -92,13 +107,13 @@ An example response:
         "scheduleId": "",
         "exchangeRate": {
             "hbars": 30000,
-            "cents": 358543,
-            "expirationTime": "Thu, 25 Apr 2024 20:00:00 GMT",
-            "exchangeRateInCents": 11.951433333333334
+            "cents": 331526,
+            "expirationTime": "Fri, 26 Apr 2024 18:00:00 GMT",
+            "exchangeRateInCents": 11.050866666666666
         },
         "topicSequenceNumber": "0",
         "topicRunningHash": "",
-        "totalSupply": "0",
+        "totalSupply": "900",
         "scheduledTransactionId": "",
         "serials": [],
         "duplicates": [],
@@ -109,7 +124,7 @@ An example response:
 
 ## Live Demo on CodePen
 
-{% embed url="https://codepen.io/kpachhai/pen/bGJZpKO" %}
+{% embed url="https://codepen.io/kpachhai/pen/wvZOXLN" %}
 
 <details>
 

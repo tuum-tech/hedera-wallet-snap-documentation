@@ -1,4 +1,4 @@
-# hts/freezeAccount
+# hcs/updateTopic
 
 ## How to call the API from an app
 
@@ -9,7 +9,7 @@ Then, depending on whether you're trying to connect to a metamask account or a n
 ```tsx
 const snapId = `npm:@hashgraph/hedera-wallet-snap`
 
-const freezeAccountAPI = async () => {
+const snapAPI = async () => {
   const externalAccountParams = {
     externalAccount: {
       accountIdOrEvmAddress: '0.0.12345',
@@ -22,11 +22,16 @@ const freezeAccountAPI = async () => {
     params: {
       snapId,
       request: {
-        method: 'hts/freezeAccount',
+        method: 'hcs/updateTopic',
         params: {
           network: 'testnet',
-          tokenId: '0.0.4280233',
-          accountId: '0.0.1',
+          topicId: '0.0.4617270',
+          memo?, // Optional param - type: string
+          expirationTime?, // Optional param - type: number
+          adminKey?, // Optional param - type: string
+          submitKey?, // Optional param - type: string
+          autoRenewPeriod?, // Optional param - type: number
+          autoRenewAccount?, // Optional param - type: string
           /* 
             Uncomment the below line if you want to connect 
             to a non-metamask account
@@ -40,20 +45,18 @@ const freezeAccountAPI = async () => {
 ```
 
 {% hint style="info" %}
-* You must call this API with the account that has the ability to freeze an account. This is defined during account creation with `freezePublicKey` parameter.
+* If you pass in `adminKey,`you will need this same key to update the topic in the future.
+* If you pass in `submitKey`, it'll make the topic private which means you need to use this key to submit messages to this topic.
 {% endhint %}
 
 ## What the API does
 
 1. Retrieves the currently connected account the user has selected on Metamask. If it's the first time, a new [snap account](../../snap-account.md) is created and the account info is saved in snap state.
-2. Parses the arguments that were passed such as the tokenId, accountId, etc
-3. Calls the [Hedera SDK Freeze Account API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/token-service/freeze-an-account) to freeze an account. It freezes transfers of the specified token for the account.&#x20;
-4. This action cannot be called if this token was created without passing the `freezePublicKey` parameter. Furthermore, this action must also be called using the same public key account.
-5. Returns the transaction receipt as response
+2. Parses the arguments that were passed.
+3. Calls the [Hedera SDK Update Topic API](https://docs.hedera.com/hedera/sdks-and-apis/sdks/consensus-service/update-a-topic) to update the properties of an existing topic such as memo, admin key, submit key, etc.
+4. Returns the transaction receipt as response
 
-
-
-<figure><img src="../../../.gitbook/assets/Untitled (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Untitled.png" alt=""><figcaption></figcaption></figure>
 
 An example response:
 
@@ -66,15 +69,15 @@ An example response:
         "hederaEvmAddress": "0xca53f9c93d30e0b7212d67901e5a24fb090d542b",
         "publicKey": "0x0206022cea4c6dd6d2e7263b8802253971de922f5380661d97cba82dee66f57ad6",
         "balance": {
-            "hbars": 96.50396084,
-            "timestamp": "Thu, 25 Apr 2024 19:49:37 GMT",
+            "hbars": 86.77980052,
+            "timestamp": "Mon, 22 Jul 2024 18:00:45 GMT",
             "tokens": {
                 "0.0.4279119": {
                     "balance": 50,
                     "decimals": 1,
                     "tokenId": "0.0.4279119",
-                    "name": "Tuum",
-                    "symbol": "TUUM",
+                    "name": "NewTuum",
+                    "symbol": "NEWTUUM",
                     "tokenType": "FUNGIBLE_COMMON",
                     "supplyType": "INFINITE",
                     "totalSupply": "50",
@@ -95,9 +98,9 @@ An example response:
         "scheduleId": "",
         "exchangeRate": {
             "hbars": 30000,
-            "cents": 358543,
-            "expirationTime": "Thu, 25 Apr 2024 20:00:00 GMT",
-            "exchangeRateInCents": 11.951433333333334
+            "cents": 202259,
+            "expirationTime": "Tue, 23 Jul 2024 19:00:00 GMT",
+            "exchangeRateInCents": 6.741966666666666
         },
         "topicSequenceNumber": "0",
         "topicRunningHash": "",
@@ -112,7 +115,7 @@ An example response:
 
 ## Live Demo on CodePen
 
-{% embed url="https://codepen.io/kpachhai/pen/wvZOGLZ" %}
+{% embed url="https://codepen.io/kpachhai/pen/abgZXRB" %}
 
 <details>
 
