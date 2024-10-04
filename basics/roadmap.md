@@ -68,9 +68,9 @@
 
 ## Miscellaneous
 
-* [ ] Snap static home page UI within MetaMask
-* [ ] Update Snap dialog boxes with images and static pages to make it more UX friendly
-* [ ] Send notifications to MetaMask for actionable information
+* [x] Snap static home page UI within MetaMask
+* [x] Update Snap dialog boxes with images and static pages to make it more UX friendly
+* [x] Send notifications to MetaMask for actionable information
 
 ## Example website
 
